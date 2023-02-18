@@ -1,6 +1,6 @@
-import { main } from "./clientReqRes/indexServer"
+import { main  as initServer } from "./clientReqRes/indexServer"
 
 
-main().then(() => {
+initServer().then(() => {
   console.log("Exiting")
 })
