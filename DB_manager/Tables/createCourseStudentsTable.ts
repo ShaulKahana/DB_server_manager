@@ -12,7 +12,7 @@ export interface StudentCourseInterface {
 export async function createTable(sequelize: Sequelize, Course: CourseInterface["Schema"], Student: StudentInterface["Schema"]): Promise<StudentCourseInterface> {
   const StudentCourse = sequelize.define<StudentSchemaModel>('student_course', {
   } as StudentCourse, {
-    schema: "students",
+    schema: "university_managment",
     createdAt: false,
   })
   Course.belongsToMany(Student, { through: StudentCourse })

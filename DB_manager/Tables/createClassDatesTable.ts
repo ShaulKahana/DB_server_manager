@@ -18,11 +18,12 @@ export interface Class_detesInterface {
 
 
 export async function createTable(sequelize: Sequelize, 
-    Course: CourseInterface["Schema"], Lecturer: LecturerInterface["Schema"], 
+    Course: CourseInterface["Schema"],
+    Lecturer: LecturerInterface["Schema"], 
     Syllabus: SyllabusInterface["Schema"], 
     Room: RoomInterface["Schema"]): Promise<Class_detesInterface> {
 
-    const Class_detesSchema = sequelize.define<Class_detesSchemaModel>("Syllabus", {
+    const Class_detesSchema = sequelize.define<Class_detesSchemaModel>("Class_detes", {
         id: {
             type: DataTypes.UUID,
             primaryKey: true,
@@ -53,6 +54,7 @@ export async function createTable(sequelize: Sequelize,
     Class_detesSchema.belongsTo(Room, { foreignKey: 'room_id' });
 
     await Class_detesSchema.sync({ })
+
     return {
         Schema: Class_detesSchema,
 
