@@ -9,6 +9,7 @@ export interface StudentInterface {
     Schema: ModelStatic<StudentSchemaModel>
     insert: (student: Omit<Student, "id">) => Promise<Student>
     searchById: (id: string) => Promise<Student|undefined>
+    delete:(Studentid: string) => Promise<boolean>
 
 }
 
@@ -50,6 +51,11 @@ export async function createTable(sequelize: Sequelize): Promise<StudentInterfac
         async searchById(id: string) {
             const result = await StudentSchema.findByPk(id)
             return result?.toJSON();
-        }
+        },
+
+        async delete(Studentid: string){
+            const result = await StudentSchema.destroy({where:{id:Studentid}})
+            return result === 1;
+        },
     };
 }

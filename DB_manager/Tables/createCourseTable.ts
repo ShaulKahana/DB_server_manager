@@ -1,5 +1,7 @@
 import { Model, Sequelize, DataTypes, ModelStatic } from "sequelize";
-import { Course } from "../Model/course";
+import { Course as coursemodel } from "../Model/course";
+
+type Course = Omit<coursemodel,"class_dates" | "syllabus">
 
 type CourseSchemaModel = Model<Course>
 
